@@ -1,24 +1,7 @@
-name: 自動化
+name: 手動觸發的自動化 (MacOS)
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
-#     TW +8 4->12;16->24
   workflow_dispatch:
-
-# jobs:
-#   automation:
-#     name: 自動化
-#     runs-on: macos-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Bahamut Automation
-#         uses: JacobLinCool/Bahamut-Automation@v0.6.13
-#         with:
-#           modules: "login,ad_handler,sign,report,guild,report,answer,report,lottery,report,logout,report,telegram"
-#           parameters: ${{ secrets.parameters || '{}' }}
-#           secrets: ${{ secrets.secrets }}
-#       - uses: gautamkrishnar/keepalive-workflow@master
 
 jobs:
   automation:
@@ -29,6 +12,6 @@ jobs:
       - name: Bahamut Automation
         uses: JacobLinCool/Bahamut-Automation@action
         with:
-          modules: "report,ad_handler,cookie_login,sign,guild,answer,lottery,del_mail,report"
-          secrets: ${{ secrets.SECRETS2 }}
+          modules: "report,ad_handler,cookie_login,sign,guild,answer,lottery,del_mail,report,telegram,discord,line_notify,issue"
+          secrets: ${{ secrets.SECRETS }}
           parameters: '{ "lottery_max_parallel": 3, "del_mail_match": [ { "title": "【勇者福利社】成功獲得抽獎資格通知信" } ], "only_failed": true }'
